@@ -1,1 +1,7 @@
 .vscode
+a.out
+.clang-format
+.DS_Store
+build/
+build
+**/build/
