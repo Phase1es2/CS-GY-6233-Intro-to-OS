@@ -2,10 +2,10 @@
 #include "oslabs.h"
 #define PID process_id
 #define AT arrival_timestamp
-#define TB total_bursttime
-#define ES execution_starttime
-#define EE execution_endtime
-#define RB remaining_bursttime
+#define TBT total_bursttime
+#define EST execution_starttime
+#define EET execution_endtime
+#define RBT remaining_bursttime
 #define PP process_priority
 
 //NULLPCB is defined as [PID:0, AT:0, TBT:0, EST:0, EET:0, RBT:0, Priority:0]
@@ -13,10 +13,10 @@ struct PCB NULLPCB = {[0, 0, 0, 0, 0, 0, 0]};
 
 int check_exited_process(struct PCB inpcb) {
   if (inpcb.PID == NULLPCB.PID && inpcb.AT == NULLPCB.AT &&
-      inpcb.TB == NULLPCB.TB && inpcb.ES == NULLPCB.ES &&
-      inpcb.EE == NULLPCB.EE && inpcb.RB == NULLPCB.RB &&
+      inpcb.TBT == NULLPCB.TBT && inpcb.EST == NULLPCB.EST &&
+      inpcb.EET == NULLPCB.EET && inpcb.RBT == NULLPCB.RBT &&
       inpcb.PP == NULLPCB.PP)
-    return 1;
+    í return 1;
 
   return 0;
 }
