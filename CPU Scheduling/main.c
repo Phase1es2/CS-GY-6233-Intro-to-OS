@@ -340,13 +340,32 @@ void handle_process_completion_rr_test() {
   print_pcb("Returned ", returned_pcb);
   puts("----------------------------------------------------------");
 }
-int main() {
+int main(int argc, char** argv) {
 
-  // handle_process_arrival_pp_test();
-  // handle_process_completion_pp_test();
-  // handle_process_arrival_srtp_test();
-  // handle_process_completion_srtp_test();
-  // handle_process_arrival_rr_test();
-  handle_process_completion_rr_test();
+  if (argc < 2) {
+    printf(
+        "Usage: %s [arrival_pp | completion_pp | arrival_srtp | "
+        "completion_srtp | arrival_rr | completion_rr]\n",
+        argv[0]);
+    return 1;
+  }
+
+  if (strcmp(argv[1], "arrival_pp") == 0) {
+    handle_process_arrival_pp_test();
+  } else if (strcmp(argv[1], "completion_pp") == 0) {
+    handle_process_completion_pp_test();
+  } else if (strcmp(argv[1], "arrival_srtp") == 0) {
+    handle_process_arrival_srtp_test();
+  } else if (strcmp(argv[1], "completion_srtp") == 0) {
+    handle_process_completion_srtp_test();
+  } else if (strcmp(argv[1], "arrival_rr") == 0) {
+    handle_process_arrival_rr_test();
+  } else if (strcmp(argv[1], "completion_rr") == 0) {
+    handle_process_completion_rr_test();
+  } else {
+    printf("Unknown test: %s\n", argv[1]);
+    return 1;
+  }
+
   return 0;
 }
