@@ -106,7 +106,7 @@ void handle_request_completion_fcfs_test() {
   memset(request_queue, 0, sizeof request_queue);
   queue_cnt = 0;
   setup_rcb(&r1, 4, 2, 53, 53, 4);
-  setup_rcb(&r2, 5, 3, 53, 53, 5);
+  setup_rcb(&r2, 5, 3, 54, 54, 5);
   setup_rcb(&r3, 6, 5, 51, 59, 6);
   request_queue[queue_cnt++] = r1;
   request_queue[queue_cnt++] = r2;
@@ -172,6 +172,9 @@ void handle_request_arrival_sstf_test() {
   setup_rcb(&new_request, 52, 3, 54, 54, 52);
   timestamp = 3;
 
+  returned_rcb = handle_request_arrival_sstf(
+      request_queue, &queue_cnt, current_request, new_request, timestamp);
+
   print_queue("Q3 ", request_queue, queue_cnt);
   print_rcb("Returned ", returned_rcb);
   puts("----------------------------------------------------------");
@@ -180,7 +183,7 @@ void handle_request_arrival_sstf_test() {
 void handle_request_completion_sstf_test() {
   struct RCB request_queue[QUEUEMAX];
   struct RCB r1, r2, r3, r4, returned_rcb;
-  int timestamp, queue_cnt, current_cylinder;
+  int timestamp, queue_cnt = 0, current_cylinder;
 
   setup_rcb(&r1, 1, 72, 45, 45, 1);
   setup_rcb(&r2, 2, 71, 47, 47, 2);
@@ -224,6 +227,9 @@ void handle_request_completion_sstf_test() {
   request_queue[queue_cnt++] = r3;
   request_queue[queue_cnt++] = r4;
   current_cylinder = 25;
+
+  returned_rcb = handle_request_completion_sstf(request_queue, &queue_cnt,
+                                                current_cylinder);
 
   print_queue("Q3 ", request_queue, queue_cnt);
   print_rcb("Returned ", returned_rcb);
@@ -279,7 +285,7 @@ void handle_request_arrival_look_test() {
 void handle_request_completion_look_test() {
   struct RCB request_queue[QUEUEMAX];
   struct RCB r1, r2, r3, r4, returned_rcb;
-  int timestamp, queue_cnt, current_cylinder, scan_direction;
+  int timestamp, queue_cnt = 0, current_cylinder, scan_direction;
 
   setup_rcb(&r1, 1, 52, 58, 58, 1);
   setup_rcb(&r2, 2, 51, 58, 58, 2);
