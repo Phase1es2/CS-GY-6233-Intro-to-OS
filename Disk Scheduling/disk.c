@@ -2,23 +2,19 @@
 #include <string.h>
 #include "oslabs.h"
 
+#define RID request_id
+#define AT arrival_timestamp
+#define CYL cylinder
+#define ADDR address
+#define PID process_id
+
 struct RCB NULLRCB = {0, 0, 0, 0, 0};
 
-void setup_rcb(struct RCB* intrcb, int request_id, int arrival_timestamp,
-               int cylinder, int address, int process_id) {
-  (*intrcb).request_id = request_id;
-  (*intrcb).arrival_timestamp = arrival_timestamp;
-  (*intrcb).cylinder = cylinder;
-  (*intrcb).address = address;
-  (*intrcb).process_id = process_id;
-}
-
 int check_disk_free(struct RCB current_request) {
-  if (current_request.request_id == NULLRCB.request_id &&
-      current_request.arrival_timestamp == NULLRCB.arrival_timestamp &&
-      current_request.cylinder == NULLRCB.cylinder &&
-      current_request.address == NULLRCB.address &&
-      current_request.address == NULLRCB.address)
+  if (current_request.RID == NULLRCB.RID && current_request.AT == NULLRCB.AT &&
+      current_request.CYL == NULLRCB.CYL &&
+      current_request.ADDR == NULLRCB.ADDR &&
+      current_request.PID == NULLRCB.PID)
     return 1;
   return 0;
 }
@@ -39,8 +35,7 @@ struct RCB handle_request_completion_fcfs(struct RCB request_queue[QUEUEMAX],
     return NULLRCB;
   int idx = 0;
   for (int i = 1; i < *queue_cnt; i++)
-    if (request_queue[i].arrival_timestamp <
-        request_queue[idx].arrival_timestamp)
+    if (request_queue[i].AT < request_queue[idx].AT)
       i = idx;
   struct RCB returned_rcb = request_queue[idx];
 

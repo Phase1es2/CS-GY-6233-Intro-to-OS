@@ -112,10 +112,3 @@ struct PCB handle_process_arrival_rr(struct PCB ready_queue[QUEUEMAX],
 struct PCB handle_process_completion_rr(struct PCB ready_queue[QUEUEMAX],
                                         int* queue_cnt, int timestamp,
                                         int time_quantum);
-
-void handle_request_arrival_fcfs_test();
-void handle_request_completion_fcfs_test();
-void handle_request_arrival_sstf_test();
-void handle_request_completion_sstf_test();
-void handle_request_arrival_look_test();
-void handle_request_completion_look_test();
