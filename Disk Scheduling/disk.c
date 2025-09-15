@@ -20,6 +20,7 @@ int check_disk_free(struct RCB current_request) {
       current_request.address == NULLRCB.address &&
       current_request.address == NULLRCB.address)
     return 1;
+  return 0;
 }
 
 struct RCB handle_request_arrival_fcfs(struct RCB request_queue[QUEUEMAX],
