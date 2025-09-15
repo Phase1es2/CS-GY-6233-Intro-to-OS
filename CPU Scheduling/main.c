@@ -20,6 +20,7 @@ void set_pcb(struct PCB* inpcb, int pid, int at, int tbt, int est, int eet,
   (*inpcb).RBT = rbt;
   (*inpcb).PP = pp;
 }
+
 void print_pcb(const char* label, struct PCB r) {
   printf("%s[PID: %d, AT: %d, TBT: %d, EST: %d, EET: %d, RBT: %d, PP: %d]\n",
          label, r.PID, r.AT, r.TBT, r.EST, r.EET, r.RBT, r.PP);
@@ -340,6 +341,7 @@ void handle_process_completion_rr_test() {
   print_pcb("Returned ", returned_pcb);
   puts("----------------------------------------------------------");
 }
+
 int main(int argc, char** argv) {
 
   if (argc < 2) {
