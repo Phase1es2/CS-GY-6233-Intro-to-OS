@@ -173,6 +173,7 @@ void first_fit_allocate_test() {
 
   memset(memory_map, 0, sizeof memory_map);
   map_cnt = 0;
+
   set_mb(&b1, 0, 19, 20, 0);
   set_mb(&b2, 20, 39, 20, 20);
   set_mb(&b3, 40, 54, 15, 0);
