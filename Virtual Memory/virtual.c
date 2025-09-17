@@ -2,8 +2,8 @@
 #include "../Disk Scheduling/oslabs.h"
 #define IV is_valid
 #define FN frame_number
-#define ATT arrival_timestamp
-#define LATT last_access_timestamp
+#define AT arrival_timestamp
+#define LT last_access_timestamp
 #define RC reference_count
 
 int process_page_access_fifo(struct PTE page_table[TABLEMAX], int* table_cnt,
