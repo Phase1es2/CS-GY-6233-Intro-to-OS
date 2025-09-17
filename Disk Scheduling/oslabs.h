@@ -39,9 +39,8 @@ struct PTE {
   int reference_count;
 };
 
-int check_disk_free(struct RCB a);
-void setup_rcb(struct RCB* intrcb, int request_id, int arrival_timestamp,
-               int cylinder, int address, int process_id);
+// int check_disk_free(struct RCB a);
+// void setup_rcb(struct RCB* intrcb, int request_id, int arrival_timestamp, int cylinder, int address, int process_id);
 struct RCB handle_request_arrival_fcfs(struct RCB request_queue[QUEUEMAX],
                                        int* queue_cnt,
                                        struct RCB current_request,
